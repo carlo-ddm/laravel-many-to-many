@@ -19,13 +19,15 @@
               <td>{{$post->title}}</td>
               @if ($post->category)
                 <td>{{$post->category->name}}</td>
+                @else
+                <td>-</td>
               @endif
               <td>
-                  @if ($post->tags)
+                @if ($post->tags)
                     @forelse ($post->tags as $tag)
                         <span class="badge rounded-pill bg-info text-dark">{{$tag->name}}</span>
                     @empty
-                        -
+                    -
                     @endforelse
                   @endif
               </td>

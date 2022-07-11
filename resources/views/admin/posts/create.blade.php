@@ -49,6 +49,17 @@
                 @endforeach
             </select>
         </div>
+        {{-- Inserisco Checkbox --}}
+        <div class="mb-3">
+            @foreach ($tags as $tag)
+            {{-- Faccio si che il name sia uguale a tutti i tags --}}
+            {{-- attribuisco id univoco ad ogni tag --}}
+            {{-- Creo corrispondenza tra ID e FOR --}}
+                <input type="checkbox" name="tags[]" id="tag{{$loop->iteration}}" value="{{$tag->id}}">
+                {{-- ricorda: il 'for' deve essere riferito all'id --}}
+                <label class="mr-3" for="tag{{$loop->iteration}}">{{$tag->name}}</label>
+            @endforeach
+        </div>
         <button type="submit" class="btn btn-outline-primary">CREA</button>
       </form>
 
