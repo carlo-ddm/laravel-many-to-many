@@ -7,6 +7,7 @@
             <th scope="col">ID</th>
             <th scope="col">Titolo</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Tags</th>
             <th scope="col">Contenuto</th>
             <th scope="col"></th>
           </tr>
@@ -19,6 +20,13 @@
               @if ($post->category)
                 <td>{{$post->category->name}}</td>
               @endif
+              <td>
+                  @if ($post->tags)
+                    @foreach ($post->tags as $tag)
+                        <span class="badge rounded-pill bg-info text-dark">{{$tag->name}}</span>
+                    @endforeach
+                  @endif
+              </td>
               <td>{{$post->content}}</td>
               <td>
                 <a class="btn btn-outline-dark" href="{{route('admin.posts.index')}}">BACK</a>
