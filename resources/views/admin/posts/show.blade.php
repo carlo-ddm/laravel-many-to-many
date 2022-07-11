@@ -22,9 +22,11 @@
               @endif
               <td>
                   @if ($post->tags)
-                    @foreach ($post->tags as $tag)
+                    @forelse ($post->tags as $tag)
                         <span class="badge rounded-pill bg-info text-dark">{{$tag->name}}</span>
-                    @endforeach
+                    @empty
+                        -
+                    @endforelse
                   @endif
               </td>
               <td>{{$post->content}}</td>
