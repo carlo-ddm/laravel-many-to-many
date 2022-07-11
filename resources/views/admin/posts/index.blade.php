@@ -1,3 +1,15 @@
+{{-- creare la tabella tags
+creare la tabella post_tag con le FK
+inserire belongsToMany nei model in relazione mani to many
+popolare la tabella tags
+popolare la tabella ponte con elementi random
+inserire i tags nella index e nella show (se ci sono)
+aggiungere i chackbox dei tag nel form del create (gestire l’old())
+fare lo store dei tags solo se esistono
+aggiungere i chackbox dei tag nel form dell’edid (gestire l’old()  e l’eventuale presenza del dato nel post da editare)
+in update gestire la presenza del dato e sincronizzare la tabella ponte
+cosa fare in destroy? --}}
+
 @extends('layouts.app')
 
 @section('content')
