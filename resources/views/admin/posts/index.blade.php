@@ -22,6 +22,7 @@ cosa fare in destroy? --}}
             <th scope="col">ID</th>
             <th scope="col">Titolo</th>
             <th scope="col">Categoria</th>
+            <th scope="col">Tags</th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -31,6 +32,14 @@ cosa fare in destroy? --}}
               <th scope="row">{{$post->id}}</th>
               <td >{{$post->title}}</td>
               <td >{{$post->category ? $post->category->name : ' '}}</td>
+              <td>
+                {{-- Dei post voglio vedere i taga\ se è valida la relazione vengono mostrati --}}
+                @forelse ($post->tags as $tag)
+                    <span class="badge rounded-pill bg-info text-dark">{{$tag->name}}</span>
+                @empty
+                    -
+                @endforelse
+              </td>
               <td>
                   <a class="btn btn-outline-primary" href="{{route('admin.posts.show', $post)}}" >SHOW</a>
                   <a class="btn btn-outline-success" href="{{route('admin.posts.edit', $post)}}" >MODIFICA</a>
