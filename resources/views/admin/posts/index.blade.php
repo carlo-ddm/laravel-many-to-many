@@ -30,10 +30,10 @@ cosa fare in destroy? --}}
             @foreach ($posts as $post)
             <tr>
               <th scope="row">{{$post->id}}</th>
-              <td >{{$post->title}}</td>
-              <td >{{$post->category ? $post->category->name : '-'}}</td>
+              <td>{{$post->title}}</td>
+              <td>{{$post->category ? $post->category->name : '-'}}</td>
               <td>
-                {{-- Dei post voglio vedere i taga\ se è valida la relazione vengono mostrati --}}
+
                 @forelse ($post->tags as $tag)
                     <span class="badge rounded-pill bg-info text-dark">{{$tag->name}}</span>
                 @empty

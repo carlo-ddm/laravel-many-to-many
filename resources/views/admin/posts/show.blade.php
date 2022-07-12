@@ -17,11 +17,7 @@
             <tr>
               <th scope="row">{{$post->id}}</th>
               <td>{{$post->title}}</td>
-              @if ($post->category)
-                <td>{{$post->category->name}}</td>
-                @else
-                <td>-</td>
-              @endif
+              <td>{{$post->category ? $post->category->name : '-'}}</td>
               <td>
                 @if ($post->tags)
                     @forelse ($post->tags as $tag)
@@ -29,11 +25,11 @@
                     @empty
                     -
                     @endforelse
-                  @endif
+                @endif
               </td>
               <td>{{$post->content}}</td>
-              <td>
-                <a class="btn btn-outline-dark" href="{{route('admin.posts.index')}}">BACK</a>
+              <td class="d-flex">
+                <a class="btn btn-outline-dark mr-2" href="{{route('admin.posts.index')}}">BACK</a>
                 <form action="{{route('admin.posts.destroy', $post)}}" method="POST">
                     @method('DELETE')
                     @csrf
