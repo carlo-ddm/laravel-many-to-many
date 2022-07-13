@@ -55,7 +55,11 @@
             {{-- Faccio si che il name sia uguale a tutti i tags --}}
             {{-- attribuisco id univoco ad ogni tag --}}
             {{-- Creo corrispondenza tra ID e FOR --}}
-                <input type="checkbox" name="tags[]" id="tag{{$loop->iteration}}" value="{{$tag->id}}">
+                <input type="checkbox"
+                name="tags[]"
+                id="tag{{$loop->iteration}}"
+                @if(in_array($tag->id, old('tags', []))) checked @endif
+                value="{{$tag->id}}">
                 {{-- ricorda: il 'for' deve essere riferito all'id --}}
                 <label class="mr-3" for="tag{{$loop->iteration}}">{{$tag->name}}</label>
             @endforeach
