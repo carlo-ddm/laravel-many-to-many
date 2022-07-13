@@ -43,13 +43,45 @@
           @enderror
         </div>
         <div>
-            <select class=" mb-3 form-select" aria-label="Default select example" name="category_id">
+            <select
+            class=" mb-3 form-select"
+            aria-label="Default select example"
+            name="category_id">
                 <option value="">Seleziona la categoria</option>
+
                 @foreach ($categories as $category)
-                    <option @if ($category->id === old('category_id', $post->category->id)) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                {{-- @dd($categories) --}}
+                    <option
+                        @if ($category->id === old('category_id', $post->category))
+                            selected
+                        @endif
+                        value="{{$category->id}}">{{$category->name}}</option>
                 @endforeach
+
             </select>
         </div>
+
+        <div class="mb-3">
+            {{-- @dd($tags) --}}
+            @foreach ($tags as $tag)
+
+                <input type="checkbox"
+                name="tags[]"
+                id="tag{{$loop->iteration}}"
+
+                @if (!$errors->any() && $post->tags->contains($tag->id))
+                    @checked
+                @elseif ($errors->any() && in_array($tag->id, old('tags', [])))
+                    @checked
+                @endif
+
+                {{-- @if(in_array($tag->id, old('tags', [])) || $post->tags->contains($tag->id)) checked @endif --}}
+                value="{{$tag->id}}">
+
+                <label class="mr-3" for="tag{{$loop->iteration}}">{{$tag->name}}</label>
+            @endforeach
+        </div>
+
         <button type="submit" class="btn btn-outline-success">CAMBIA</button>
       </form>
   </form>
