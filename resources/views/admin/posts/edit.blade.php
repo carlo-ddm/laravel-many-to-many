@@ -70,9 +70,9 @@
                 id="tag{{$loop->iteration}}"
 
                 @if (!$errors->any() && $post->tags->contains($tag->id))
-                    @checked
+                    checked
                 @elseif ($errors->any() && in_array($tag->id, old('tags', [])))
-                    @checked
+                    checked
                 @endif
 
                 {{-- @if(in_array($tag->id, old('tags', [])) || $post->tags->contains($tag->id)) checked @endif --}}
